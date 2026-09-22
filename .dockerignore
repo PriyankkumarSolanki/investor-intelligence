@@ -1,0 +1,15 @@
+.env
+.env.*
+.git
+.gitignore
+__pycache__/
+*.pyc
+.venv/
+venv/
+.vscode/
+.idea/
+data/raw_pdfs/*
+data/markdown/*
+frontend/
+tests/
+*.md

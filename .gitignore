@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+ENV/
+env/
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+secrets.json
+credentials.json
+
+# Data artifacts (keep dirs, ignore contents)
+data/raw_pdfs/*
+data/markdown/*
+!data/raw_pdfs/.gitkeep
+!data/markdown/.gitkeep
+
+# OS / IDE
+.DS_Store
+.vscode/
+.idea/
+
+# Logs
+*.log
