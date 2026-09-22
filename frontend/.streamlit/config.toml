@@ -1,0 +1,11 @@
+# Portfolio "cobalt on warm paper" theme (mirrors ~/port/portfolio design tokens).
+[theme]
+base = "light"
+primaryColor = "#1F45D6"            # cobalt accent
+backgroundColor = "#EFEEE8"         # warm paper canvas
+secondaryBackgroundColor = "#F7F6F1" # raised card surface
+textColor = "#16171B"               # ink
+font = "sans serif"                  # Inter is applied via injected CSS
+
+[client]
+toolbarMode = "minimal"

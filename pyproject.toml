@@ -4,8 +4,9 @@ target-version = "py312"
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP"]
-# Allow module-level imports after os.environ setup in tests.
-per-file-ignores = { "tests/*" = ["E402"] }
+# Allow module-level imports after os.environ setup in tests, and long lines in
+# the injected CSS blob in the Streamlit UI.
+per-file-ignores = { "tests/*" = ["E402"], "frontend/streamlit_app.py" = ["E501"] }
 
 [tool.pytest.ini_options]
 addopts = "-q"
