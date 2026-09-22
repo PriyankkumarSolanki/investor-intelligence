@@ -1,0 +1,26 @@
+# API is internal (ClusterIP); the UI is exposed via LoadBalancer.
+apiVersion: v1
+kind: Service
+metadata:
+  name: invint-api
+spec:
+  selector:
+    app: invint-api
+  type: ClusterIP
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: invint-ui
+spec:
+  selector:
+    app: invint-ui
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8501

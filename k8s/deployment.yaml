@@ -1,0 +1,51 @@
+# Phase-2 showcase: deploy the API + UI to Kubernetes (e.g. AKS).
+# Postgres is assumed to be a managed service (Azure Database for PostgreSQL
+# with the pgvector extension) referenced via the invint-secrets Secret.
+# Replace <REGISTRY> with your container registry (e.g. myacr.azurecr.io).
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: invint-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: invint-api
+  template:
+    metadata:
+      labels:
+        app: invint-api
+    spec:
+      containers:
+        - name: api
+          image: <REGISTRY>/invint-api:latest
+          imagePullPolicy: Always
+          envFrom:
+            - secretRef:
+                name: invint-secrets
+          ports:
+            - containerPort: 8000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: invint-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: invint-ui
+  template:
+    metadata:
+      labels:
+        app: invint-ui
+    spec:
+      containers:
+        - name: ui
+          image: <REGISTRY>/invint-ui:latest
+          imagePullPolicy: Always
+          env:
+            - name: BACKEND_URL
+              value: http://invint-api:8000
+          ports:
+            - containerPort: 8501
